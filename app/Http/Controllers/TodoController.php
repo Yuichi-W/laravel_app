@@ -50,6 +50,8 @@ class TodoController extends Controller
         // ----------------------------------------------------------
         $todos = $this->todo->getByUserId(Auth::id());  // 追記
         // ----------------------------------------------------------
+        $user = Auth::user();
+        // dd($user);
         // dd($this->todo->getByUserId(Auth::id()));  //Collection {#items:array}idに紐づいたtodoリスト
         // dd($this); //TodoContoroller{}インスタンス
         // dd($this->todo);  //Todo{} Controllerインスタンス内のtodo(model)インスタンスのこと
@@ -61,7 +63,7 @@ class TodoController extends Controller
         // dd($todos); //Collection{} item: array
         // dd(compact('todos'));
         // dd(view('todo.index', compact('todos'))); //View{}
-        return view('todo.index', compact('todos'));  
+        return view('todo.index', compact('todos','user'));  
         // return view('todo.index', ['neko' => $todos]);  
         // view():Controllerで特定のViewを表示させたいときに使用
         //   第一引数:resources/viewsディレクトリ内のviewファイル名

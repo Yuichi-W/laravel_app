@@ -1,7 +1,7 @@
 @extends ('layouts.app') <!-- layoutsフォルダ内のappファイル継承してるという意味 -->
 @section ('content') <!-- 継承したappファイルの@yield('content')の部分に下記を入れる -->
 
-<h1 class="page-header">ToDo一覧</h1>
+<h1 class="page-header">{{ $user->name }}のToDo一覧</h1>
 <p class="text-right">
   <a class="btn btn-success" href="/todo/create">新規作成</a>
 </p>

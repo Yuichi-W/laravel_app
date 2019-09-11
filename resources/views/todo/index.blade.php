@@ -19,6 +19,7 @@
   <!-- dd($todos)  Collection{items:array[]} -->
     @foreach ($todos as $todo)
       <tr>
+        <td class="align-middle">{{ $todo->id }}</td>
         <td class="align-middle">{{ $todo->title }}</td>
         <td class="align-middle">{{ $todo->created_at }}</td>
         <td class="align-middle">{{ $todo->updated_at }}</td>

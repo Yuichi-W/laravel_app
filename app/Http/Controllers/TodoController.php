@@ -182,10 +182,9 @@ class TodoController extends Controller
         $this->todo->find($id)->delete();
         // find():主キー値で指定した行を取得します。id=指定id のレコードを抽出 返り値はModelインスタンスTodo{}
         // delete():モデル削除
-        // return redirect()->to('todo'); //URIを指定してリダイレクト指定
-        return redirect()->route('todo.index');　　// route nameを指定してる（routelist見ればわかる）
-        //どっちもやってることは同じ、だがURIが長くなった時は毎回描くの大変、そしてroute nameは自分で決めることできるから楽。今回はresourceで７個いっぺんに生成したけども
+        // return redirect()->route('todo');
+        return redirect()->route('todo.index');
         // 処理として、find で検索し、delete で削除という流れになります。
-        
+        // どっちもやってることは同じ、だがURIが長くなった時は毎回描くの大変、そしてroute nameは自分で決めることできるから楽。今回はresourceで７個いっぺんに生成したけども
     }
 }

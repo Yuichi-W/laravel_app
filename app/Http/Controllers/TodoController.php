@@ -107,7 +107,7 @@ class TodoController extends Controller
         $this->todo->fill($input)->save();
         // fill():引数を設定できるかどうかを確認してくれる$fiillableを参照している
         // save():レコード新規作成, 更新ができる保存
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
         // 処理が終わったらtodoページにリダイレクト（転送）。
         // ->toは可読性高めている。なくてもいい
 
@@ -165,7 +165,7 @@ class TodoController extends Controller
         // UPDATE todos SET title = :title WHERE id = :id';
         // find():主キー値で指定した行を取得します。id=指定id のレコードを抽出 返り値はModelインスタンスTodo{}
         // save():テーブルに新しいレコードを挿入
-        return redirect()->to('todo');
+        return redirect()->route('todo.index');
     }
     
     /**
@@ -182,7 +182,10 @@ class TodoController extends Controller
         $this->todo->find($id)->delete();
         // find():主キー値で指定した行を取得します。id=指定id のレコードを抽出 返り値はModelインスタンスTodo{}
         // delete():モデル削除
-        return redirect()->to('todo');
+        // return redirect()->to('todo'); //URIを指定してリダイレクト指定
+        return redirect()->route('todo.index');　　// route nameを指定してる（routelist見ればわかる）
+        //どっちもやってることは同じ、だがURIが長くなった時は毎回描くの大変、そしてroute nameは自分で決めることできるから楽。今回はresourceで７個いっぺんに生成したけども
         // 処理として、find で検索し、delete で削除という流れになります。
+        
     }
 }

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 //Modelはデータベースとやりとりを行うクラス
 class Todo extends Model
@@ -22,4 +23,14 @@ class Todo extends Model
     }
     // --------------------ここまで追記------------------------
     // 保存することが可能になり、またユーザーに紐づいたデータ取得のための記述
+
+    use SoftDeletes;
+
+    /**
+     * 日付へキャストする属性
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+    // モデルのソフトデリートを有効にするためモデルにSoftDeletesトレイトを使い、deleted_atカラムを$datesプロパティに追加している。
 }

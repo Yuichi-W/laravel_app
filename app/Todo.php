@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 //Modelはデータベースとやりとりを行うクラス
 class Todo extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'title',
         'user_id'  // 追記
@@ -16,6 +17,15 @@ class Todo extends Model
     // $fillable:レコードを追加して良いカラムを設定 (ホワイトリスト)
     // セキュリティリスクがあるため複数代入をするときは$fillable使用
     
+
+        /**
+     * 日付へキャストする属性
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+    // モデルのソフトデリートを有効にするためモデルにSoftDeletesトレイトを使い、deleted_atカラムを$datesプロパティに追加している。
+}
     // ----------------------ここから-------------------------
     public function getByUserId($id)
     {
@@ -23,14 +33,4 @@ class Todo extends Model
     }
     // --------------------ここまで追記------------------------
     // 保存することが可能になり、またユーザーに紐づいたデータ取得のための記述
-
-    use SoftDeletes;
-
-    /**
-     * 日付へキャストする属性
-     *
-     * @var array
-     */
-    protected $dates = ['deleted_at'];
-    // モデルのソフトデリートを有効にするためモデルにSoftDeletesトレイトを使い、deleted_atカラムを$datesプロパティに追加している。
 }
